@@ -44,7 +44,7 @@ const InputTransaction: React.FC<IPropsInputTransaction> = ({
     inputState.amount > 0
   return (
     <section className="border-indigo-900 shadow p-3 w-80">
-      <form onSubmit={addTransaction}>
+      <form onSubmit={addTransaction} autoComplete="off">
         <div className="relative flex border-9">
           <label htmlFor="input-from" className="absolute text-xs opacity-80">
             From
