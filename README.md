@@ -1,6 +1,8 @@
 # simple-blockchain
 A blockchain app, in which nodes communicate through websocket server. Developed mostly in TDD way.
 
+![](demo.gif)
+
 ## File structure
 
  - `client`: Blockchain node. Created with Create-React-App. Contains mining and hashing logic.
