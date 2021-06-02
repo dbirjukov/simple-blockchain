@@ -20,7 +20,7 @@ export function handleMessage(
     case 'LONGEST_CHAIN_RESPONSE':
       return handleLongestChainResponse(wss, ws, message)
     case 'ANNOUNCE_TRANSACTIONS':
-      return handleAnnounceTransaction(wss, ws, message)
+      return handleAnnounceTransactions(wss, ws, message)
     case 'ANNOUNCE_BLOCK':
       return handleAnnounceBlock(wss, ws, message)
     default:
@@ -78,7 +78,7 @@ function handleLongestChainResponse(
   }
 }
 
-function handleAnnounceTransaction(
+function handleAnnounceTransactions(
   wss: WebSocket.Server,
   ws: WebSocket,
   message: Message,
@@ -88,7 +88,7 @@ function handleAnnounceTransaction(
     if (client !== ws) {
       client.send(
         JSON.stringify({
-          type: 'ANNOUNCE_TRANSACTION',
+          type: 'ANNOUNCE_TRANSACTIONS',
           uuid: message.uuid,
           payload: message.payload,
         }),
