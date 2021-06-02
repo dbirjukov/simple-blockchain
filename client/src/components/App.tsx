@@ -50,6 +50,8 @@ function App() {
         return handleAnnounceTransactions(message)
       case MessageTypes.announceBlock:
         return handleAnnounceBlock(message)
+      default:
+        console.log(`Unknown message type: ${message.type}`)
     }
   }, [])
 
