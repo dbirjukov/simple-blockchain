@@ -60,11 +60,9 @@ function handleLongestChainResponse(
   const { uuid, payload } = message
   const responses = responsesFromClients.get(uuid)
   if (!responses) return
-  console.log(message)
   responses.push(message.payload)
   if (responses.length === wss.clients.size - 1) {
     const longestChain = getLongestChain(responses)
-    console.log('longest chain', longestChain)
     responsesFromClients.delete(uuid)
     const response: Message = {
       type: 'LONGEST_CHAIN_RESPONSE',
