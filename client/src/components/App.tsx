@@ -68,7 +68,7 @@ function App() {
     }
     initWebSocket()
     return () => wsController.disconnect()
-  }, [])
+  }, [handleWsMessage])
 
   const handleAddTransaction = (transaction: Transaction) => {
     node.addPendingTransaction(transaction)
@@ -86,6 +86,8 @@ function App() {
       wsController.announceBlock(block)
     } catch (error) {
       console.log(error)
+    } finally {
+      node.clearPendingTransactions()
     }
     setStatus(getStatus(node))
   }
