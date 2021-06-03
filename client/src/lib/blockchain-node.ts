@@ -48,7 +48,6 @@ export default class BlockChainNode {
     const minedBlock = await this.mineBlock(block)
 
     await this.addBlock(minedBlock)
-    this._pendingTransactions = []
     return minedBlock
   }
 
@@ -109,6 +108,10 @@ export default class BlockChainNode {
 
   public addPendingTransaction(transaction: Transaction) {
     this._pendingTransactions.push(transaction)
+  }
+
+  public clearPendingTransactions(): void {
+    this._pendingTransactions = []
   }
   private get lastBlockHash(): string {
     const chain = this.chain
